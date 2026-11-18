@@ -1,7 +1,7 @@
 {
   "version": "0.10.24",
   "files": {
-    ".gitattributes": "7d7fe9243716b3a13a7d0322b288f7579462c5734373bf36971d7b6293cbe41d",
+    ".gitattributes": "eab6aed0c6f34997e0fb46c5e9d57cc51d374a814397b0b4b453a6f85fc735e5",
     ".gitignore": "d0e969fc9727bbfcec886b06b217ad1c9d02d4f3547f22a7ff076ff1a914ad60",
     "AndroidManifest.xml": "b000046bf65ca35f64caef778e64fb8e643e6a06d8512ce2aaa0939e1be69b40",
     "LICENSE": "2fa6c35980ad4ca704f57ee96d5c6e348190bc2e7eada89922017cc88c2ff536",
@@ -268,7 +268,7 @@
     "tools/libvlc/test/generate_fixtures.py": "c92cea38398967f2ac9d6d852fefe09f492981c8f3e468eb2a8d62d489921f1b",
     "tools/pack_bdf.py": "b1c946e476c5458619d1ca2a3c1d2a4a285e7c01cdb51c6270aeb47678c88191",
     "tools/package_release.py": "93cc05147c6e9c6c1eb5ca47fb66bf7c6d51c290ea33cb77459ef3e3e7ac3d82",
-    "tools/prepare_release.py": "387227d1321170f1306eacee0e802277ed09b6630704c9783c315f7f02bb6a46"
+    "tools/prepare_release.py": "3678f2332f07d854bbd0f71e523559a1ae577863bd9bf880a2eeb5e576433a1b"
   },
   "self_excluded": true
 }

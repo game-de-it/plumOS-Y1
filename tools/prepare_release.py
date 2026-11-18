@@ -171,7 +171,7 @@ __pycache__/
 .env
 .env.*
 ''')
-        (stage / '.gitattributes').write_text('* text=auto\n*.sh text eol=lf\n*.py text eol=lf\n*.java text eol=lf\n*.md text eol=lf\n*.png binary\n*.jpg binary\n*.ttf binary\n*.otf binary\n*.bin binary\n*.jar binary\n*.gz binary\n')
+        (stage / '.gitattributes').write_text('* text=auto\n*.txt -text\n*.sh text eol=lf\n*.py text eol=lf\n*.java text eol=lf\n*.md text eol=lf\n*.png binary\n*.jpg binary\n*.ttf binary\n*.otf binary\n*.bin binary\n*.jar binary\n*.gz binary\n')
         audit(stage)
         hashes = {str(p.relative_to(stage)): digest(p) for p in sorted(stage.rglob('*')) if p.is_file()}
         (stage / 'SOURCE_FILES.json').write_text(json.dumps({'version': version, 'files': hashes,
