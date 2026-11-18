@@ -1,0 +1,16 @@
+Hi-MD MZ-DH10P theme font notice
+
+umplus_j10r.bdf and umplus_j12r.bdf were obtained from Pyxel example assets:
+https://github.com/kitao/pyxel/tree/main/python/pyxel/examples/assets
+
+Both BDF headers state:
+Copyright (C) 2002-2004 COZ
+Foundry: umplus
+
+The BDF files were packed to umplus_j10r.bin and umplus_j12r.bin for
+Android bitmap rendering. The original BDF files are retained in this
+source tree. The M+ BITMAP FONTS license text is in LICENSE_MPLUS_BITMAP.txt.
+
+SHA-256 of original BDF files:
+umplus_j10r.bdf  e0172aed90f8768dd10d74ab3b3a9a14c86c5fb4b36b92c03b73c978971bd69d
+umplus_j12r.bdf  41ecb8e016acf69476a4cbf82fc100dc66a0259607bc12245ae7dcdf41349ab7

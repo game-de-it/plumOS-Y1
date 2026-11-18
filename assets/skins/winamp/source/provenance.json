@@ -1,0 +1,93 @@
+{
+  "input": "PLUMOSAMP-pixel-redesign",
+  "regions": {
+    "main": {
+      "file": "MAIN.BMP",
+      "crop": [
+        0,
+        0,
+        275,
+        116
+      ],
+      "input_sha256": "21aa065c9fb8a7c694a71e4477e527711c139f35b064c61e66a9659c0358b114"
+    },
+    "title": {
+      "file": "TITLEBAR.BMP",
+      "crop": [
+        27,
+        0,
+        302,
+        14
+      ],
+      "input_sha256": "ccdc66fd945fb23fea6fa5b5beb981c9125a56bfbf4a29a47defcb258574bfee"
+    },
+    "playlist-left": {
+      "file": "PLEDIT.BMP",
+      "crop": [
+        0,
+        0,
+        25,
+        20
+      ],
+      "input_sha256": "e2130176f6e04766f07cdfb36b90afd9b84b0b1b7436fc0d3e9940c54b6766f2"
+    },
+    "playlist-label": {
+      "file": "PLEDIT.BMP",
+      "crop": [
+        26,
+        0,
+        126,
+        20
+      ],
+      "input_sha256": "e2130176f6e04766f07cdfb36b90afd9b84b0b1b7436fc0d3e9940c54b6766f2"
+    },
+    "playlist-stripe": {
+      "file": "PLEDIT.BMP",
+      "crop": [
+        128,
+        0,
+        152,
+        20
+      ],
+      "input_sha256": "e2130176f6e04766f07cdfb36b90afd9b84b0b1b7436fc0d3e9940c54b6766f2"
+    },
+    "playlist-buttons": {
+      "file": "PLEDIT.BMP",
+      "crop": [
+        154,
+        0,
+        178,
+        20
+      ],
+      "input_sha256": "e2130176f6e04766f07cdfb36b90afd9b84b0b1b7436fc0d3e9940c54b6766f2"
+    },
+    "playlist-footer": {
+      "file": "PLEDIT.BMP",
+      "crop": [
+        0,
+        72,
+        275,
+        110
+      ],
+      "input_sha256": "e2130176f6e04766f07cdfb36b90afd9b84b0b1b7436fc0d3e9940c54b6766f2"
+    },
+    "transport": {
+      "file": "CBUTTONS.BMP",
+      "crop": [
+        0,
+        0,
+        136,
+        18
+      ],
+      "input_sha256": "78f6ea946a4e4f9010d614f811128dbdb6da08117f45e4375d68bf7d070d9414"
+    }
+  },
+  "rights_status": "Creator-provided PLUMOSAMP artwork, with original Winamp as visual reference. Referencing alone is not treated as copying, and changed-pixel counts are not a rights test. No third-party permission is inferred from the logo replacement.",
+  "excluded": [
+    "original lightning logo",
+    "unused title rows and slogan",
+    "cursors",
+    "region documentation",
+    "unused sprite sheets"
+  ]
+}

@@ -1,0 +1,27 @@
+# Generated outputs and private local material
+.DS_Store
+._*
+__pycache__/
+/build/
+/dist/
+/output/
+/release/
+/public/
+/reports/
+/previews/
+/converted-bgm/
+/third_party/libvlc/extracted/
+/third_party/libvlc/audio/extracted/
+/third_party/libvlc/*.aar
+/firmware/keys/*.debugfs
+/firmware/keys/build.prop.usb
+/firmware/branding/*.debugfs
+/firmware/branding/boot_logo
+/firmware/branding/bootanimation.zip
+/firmware/branding/plumos-logo-480x360.png
+/firmware/branding/plumos-logo-rgb565-preview.png
+*.keystore
+*.jks
+*.p12
+.env
+.env.*

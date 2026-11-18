@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "gen6",
+  "name": "第6世代・nano 3",
+  "nameEn": "6th Gen / nano 3",
+  "layout": "split",
+  "colors": {
+    "background": "#F3F5F6",
+    "headerTop": "#F7FAFC",
+    "headerBottom": "#B9CEDC",
+    "text": "#17232E",
+    "muted": "#566573",
+    "selectedTop": "#54B8E6",
+    "selectedBottom": "#0878B8",
+    "selectedText": "#FFFFFF",
+    "divider": "#BAC9D3",
+    "progress": "#1991C8"
+  },
+  "fontSize": 17,
+  "rowHeight": 40
+}

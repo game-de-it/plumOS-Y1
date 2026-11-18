@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "winamp",
+  "name": "PLUMOSAMP",
+  "nameEn": "PLUMOSAMP",
+  "layout": "winamp",
+  "colors": {
+    "background": "#000000",
+    "headerTop": "#3E3C60",
+    "headerBottom": "#29293D",
+    "text": "#CFD8C4",
+    "muted": "#8DAC78",
+    "selectedTop": "#14203B",
+    "selectedBottom": "#14203B",
+    "selectedText": "#00E900",
+    "divider": "#65647F",
+    "progress": "#00E900"
+  },
+  "fontSize": 17,
+  "rowHeight": 32
+}

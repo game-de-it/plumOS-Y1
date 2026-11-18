@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "third",
+  "name": "第3世代",
+  "nameEn": "3rd Generation",
+  "layout": "mono3",
+  "colors": {
+    "background": "#D4D8C5",
+    "headerTop": "#E4E8D6",
+    "headerBottom": "#C7CCB8",
+    "text": "#28312A",
+    "muted": "#536051",
+    "selectedTop": "#5A6957",
+    "selectedBottom": "#374A38",
+    "selectedText": "#FFFFFF",
+    "divider": "#8A9687",
+    "progress": "#3E5A40"
+  },
+  "fontSize": 22,
+  "rowHeight": 50
+}

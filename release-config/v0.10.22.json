@@ -1,0 +1,67 @@
+{
+  "version": "0.10.22",
+  "release_date": "2026-11-18",
+  "hardware": "Innioasis Y1 Type A",
+  "base_firmware": "3.1.2",
+  "android_version": "4.2.2",
+  "signing_certificate_sha256": "de69fd16afa16981e7aa7710f7932ca15b76a8b324037bf94ad828288af4af10",
+  "tested_binary_sha256": {
+    "plumOS-Y1-v0.10.22-player.apk": "13f3ff430b252e43063c0aebeb195b9606ce668475772b1e7d32861def8e72eb",
+    "plumOS-Y1-v0.10.22-libvlc-source.tar.gz": "64fa18ba2458f25c09d8d9b66eb00bc9e4ab10b78e46f33ebdea2eae9b1c911d",
+    "plumOS-Y1-v0.10.22-TypeA.zip": "f8b855b9a53626335e763f10e8b2f055728fdbb7e339561b1f13147232bf358d"
+  },
+  "open_publication_checks": [
+    "F1/F2: establish the redistribution basis and OSS/source inventory for this stock-3.1.2-based firmware; community publishing guidance is confirmed but not a component-wide license",
+    "W1: resolve the specific Winamp default-skin artwork terms, or replace/omit it across firmware, APK, source and screenshots",
+    "V4: independently signed modified-library firmware installation is documented but has not been separately validated on hardware",
+    "P2: when publishing, provide both matching source archives, notices and checksums with working public access; repository/release not created"
+  ],
+  "tested_payload_sha256": {
+    "system.img": "4f8c0f94a028e9d68eb2aef73d8b2854d1374e72aae84aa01863269c0a36ab05",
+    "logo.bin": "960401ecf3671a15211b8c30b615bf5dad2fb61990b3c612a9e9286913804ca7"
+  },
+  "packaging_provenance": {
+    "original_tested_archive_sha256": "2bead813248f709eac1fc853ae06ec3bde0ca984dc3c78b9faa099eb1e45d571",
+    "revision": "clean-source-release-2",
+    "runtime_payload_unchanged": false,
+    "removed_non_flash_metadata": [
+      ".state",
+      "hwparam.json"
+    ],
+    "updated_or_added_notices": [
+      "README_JA.md",
+      "LIBVLC_README_JA.md",
+      "RELEASE_NOTICES.md",
+      "COPYING.LGPL-2.1",
+      "RUNTIME_NOTICES.txt",
+      "ANDROID_SUPPORT_NOTICES.txt"
+    ],
+    "note": "The release APK is reassembled from clean source outputs: 55 live classfiles match the original, 16 unreferenced stale classfiles removed. Native libraries and logo unchanged. Clean APK silent native/EQ smoke passed; final rebuilt firmware cold boot remains R1.",
+    "native_library_payload_unchanged": true,
+    "current_java_classfiles_unchanged": true,
+    "removed_unreferenced_classfiles": 16,
+    "native_source_notice_revision": "NDK root and Android support notices added; library bytes and build configuration unchanged"
+  },
+  "validation": {
+    "type_a_firmware_flash": "original 0.10.22 native-migration firmware flashed and passed; final clean-APK firmware not reflashed (R1)",
+    "audio_formats_eq": "13 formats x 3 EQ modes: 39/39 before firmware and 39/39 after firmware; native EQ acceptance passed",
+    "ordinary_library_playback": "MP3/M4A through Android with EQ off and LibVLC with EQ on: 4/4 after firmware",
+    "software_volume": "100/110/120/130 readbacks passed; boost cleared on decrease",
+    "speaker": "post-flash playback and user listening passed",
+    "bluetooth": "post-flash native Android settings reconnect; 3 EQ and 4 ordinary-track checks passed with A2DP connected; user listening passed",
+    "native_runtime_source": "in-process memory maps and hashes confirm all three rebuilt system libraries loaded from /system/lib",
+    "settings_and_library": "English, fifth theme, EQ settings and 809 tracks retained across firmware flash",
+    "stock_frontend_usb_policy": "stock frontend disabled; persistent and live USB configuration adb after flash",
+    "same_version_local_apk_update": "passed on 0.10.21; UI path unchanged in 0.10.22, not separately repeated",
+    "cross_version_apk_update": "0.10.21 to 0.10.22 tested through ADB; cross-version on-device file selection/install not separately repeated",
+    "usb_disk_transfer": "passed on 0.10.21; code/config retained; disk round trip not separately repeated on 0.10.22",
+    "broader_ui_regression": "themes, settings, click/vibration, shutdown and controls retain prior evidence; not all combinations repeated on 0.10.22",
+    "clean_apk_source_assembly": "clean source and root builds have identical non-signature payload entries; all 55 current classfiles match prior compiled code; 16 unreferenced stale classes removed",
+    "clean_apk_device_smoke": "same-signature APK installed in place; silent native playback/EQ off-flat-bass 3/3 passed; native input hashes unchanged"
+  },
+  "native_license_audit": "Source-built LGPL-2.1 audio profile: 75 LGPL-labeled modules, 18 contribs; old DVD/GPL implementation evidence absent; sources/notices supplied; modified-signature installation check remains open",
+  "version_code": 44,
+  "recommended_release_checks": [
+    "R1: flash/cold-boot the final clean-APK 0.10.22 firmware and repeat USB disk transfer/eject/remount plus device-side APK selection/install. Earlier physical and 0.10.21 evidence are retained separately."
+  ]
+}

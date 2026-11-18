@@ -1,0 +1,113 @@
+{
+  "artifact": "org.videolan.android:libvlc-all:3.7.1",
+  "abi": "armeabi-v7a",
+  "finding": "GPL-covered implementation code is present; this binary is not cleared as LGPL-only",
+  "confirmed_gpl_component_evidence": {
+    "libdvdcss": true,
+    "libdvdread": true
+  },
+  "upstream_recipe_license_modes": {
+    "g": "default; GPL v3 recipe",
+    "l": "LGPL v3 plus ad clauses recipe",
+    "a": "LGPL v2.1 plus ad clauses recipe"
+  },
+  "limitations": "Symbols prove implementation presence. They do not establish every component version, complete source correspondence, or the final combined-work license version.",
+  "libraries": {
+    "libvlc.so": {
+      "sha256": "0bf0e34edea790aa871fd6b4b6e15b0d5229d5ce787c630392ace013d38a618e",
+      "bytes": 40040664,
+      "needed_shared_libraries": [
+        "libdl.so",
+        "libc++_shared.so",
+        "libEGL.so",
+        "libGLESv2.so",
+        "libm.so",
+        "liblog.so",
+        "libc.so",
+        "libandroid.so"
+      ],
+      "defined_symbol_evidence": {
+        "libdvdcss": [
+          "dvdcss_close",
+          "dvdcss_error",
+          "dvdcss_is_scrambled",
+          "dvdcss_open",
+          "dvdcss_open_stream",
+          "dvdcss_read",
+          "dvdcss_readv",
+          "dvdcss_seek"
+        ],
+        "libdvdread": [
+          "DVDOpen",
+          "DVDOpen2",
+          "DVDOpenFile",
+          "DVDOpenStream",
+          "DVDOpenStream2"
+        ],
+        "zvbi": [
+          "vbi_atvef_trigger",
+          "vbi_cache_delete",
+          "vbi_cache_hi_subno",
+          "vbi_cache_new",
+          "vbi_cache_ref",
+          "vbi_cache_unref",
+          "vbi_caption_channel_switched",
+          "vbi_caption_color_level"
+        ]
+      },
+      "embedded_configure_flags": [
+        "--enable-dvdread",
+        "--enable-live555",
+        "--enable-zvbi"
+      ]
+    },
+    "libvlcjni.so": {
+      "sha256": "f02995f3e5b31b27f395b3e2f22053f3f31ba345ceb3cc5843c47cf718acedd9",
+      "bytes": 83544,
+      "needed_shared_libraries": [
+        "libdl.so",
+        "libvlc.so",
+        "liblog.so",
+        "libc.so",
+        "libm.so"
+      ],
+      "defined_symbol_evidence": {
+        "libdvdcss": [],
+        "libdvdread": [],
+        "zvbi": []
+      },
+      "embedded_configure_flags": []
+    },
+    "libc++_shared.so": {
+      "sha256": "092a44574c247982e265743acb1227e11a2f079a765814fef1b627dbfb2b79d5",
+      "bytes": 554808,
+      "needed_shared_libraries": [
+        "libc.so",
+        "libdl.so"
+      ],
+      "defined_symbol_evidence": {
+        "libdvdcss": [],
+        "libdvdread": [],
+        "zvbi": []
+      },
+      "embedded_configure_flags": []
+    }
+  },
+  "firmware_system_copies": {
+    "libvlc.so": {
+      "path": "/system/lib/libvlc.so",
+      "sha256": "0bf0e34edea790aa871fd6b4b6e15b0d5229d5ce787c630392ace013d38a618e",
+      "matches_apk_copy": true
+    },
+    "libvlcjni.so": {
+      "path": "/system/lib/libvlcjni.so",
+      "sha256": "f02995f3e5b31b27f395b3e2f22053f3f31ba345ceb3cc5843c47cf718acedd9",
+      "matches_apk_copy": true
+    },
+    "libc++_shared.so": {
+      "path": "/system/lib/libc++_shared.so",
+      "sha256": "092a44574c247982e265743acb1227e11a2f079a765814fef1b627dbfb2b79d5",
+      "matches_apk_copy": true
+    }
+  }
+}

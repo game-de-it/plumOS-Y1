@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "night-blue",
+  "name": "Night Blue",
+  "nameEn": "My Theme",
+  "layout": "split",
+  "colors": {
+    "background": "#101923",
+    "headerTop": "#36485F",
+    "headerBottom": "#16293F",
+    "text": "#F4F7FA",
+    "muted": "#B8C8D7",
+    "selectedTop": "#278AC2",
+    "selectedBottom": "#13547F",
+    "selectedText": "#FFFFFF",
+    "divider": "#496075",
+    "progress": "#4CB7E9"
+  },
+  "fontSize": 17,
+  "rowHeight": 38
+}

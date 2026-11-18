@@ -1,0 +1,27 @@
+{
+  "artifact": "org.videolan.android:libvlc-all:3.7.1",
+  "aar_url": "https://repo.maven.apache.org/maven2/org/videolan/android/libvlc-all/3.7.1/libvlc-all-3.7.1.aar",
+  "aar_sha256": "bc1e14d4344c90e4931ad524671024e9605d599d8ca22a894f709e3c0887fb48",
+  "android_release_recipe": {
+    "url": "https://github.com/videolan/vlc-android/tree/c05d7a53209d309b862bf07b04896db11bc10fd6",
+    "commit": "c05d7a53209d309b862bf07b04896db11bc10fd6"
+  },
+  "libvlcjni_recipe_commit": "2fca0d2b5eb1d94e2c41e23408e8087358cb983a",
+  "vlc_recipe_base_commit": "4c608da16c33560821be7e5c1ad4e34bf5a65398",
+  "vlc_recipe_patches": "libvlcjni archive: libvlc/patches; applied by buildsystem/get-vlc.sh",
+  "binary_observations": {
+    "libvlc_version": "3.0.24-beta1 Vetinari",
+    "revision_string": "3.0.23-2-650-g95458d4ad1",
+    "abi": "armeabi-v7a"
+  },
+  "verification": "Java archive and recipe source collection verified. Complete corresponding native/contrib sources and GPL/LGPL distribution-route decision remain open.",
+  "local_files": {
+    "libvlc-all-3.7.1-sources.jar": "95bb03b150ca4cda5fb334b02df2e4f95c627940a1134f805161ab0146566a37",
+    "libvlc-all-3.7.1.pom": "17e9eb8569e1246e9af4d1000222a137e670f2054c1be919ddf880121bb94aa2",
+    "libvlcjni-2fca0d2b5eb1d94e2c41e23408e8087358cb983a.tar.gz": "853c16b78f5486d6d05d4eeafebd0971e15372d6c1142fcd3f3767d0ff342c3a",
+    "vlc-4c608da16c33560821be7e5c1ad4e34bf5a65398.tar.gz": "25aea2f09a5473bc5f6cf5645881c04b982bc1be0bbdec15f805b14c430dfc0c",
+    "vlc-android-3.7.1-compile.sh": "3021a108cf690afefff6a95b70f3179ce9584631b45aaa8cdedfa729ed727a13"
+  },
+  "binary_license_audit": "GPL implementation symbols confirmed in libvlc.so (libdvdcss and libdvdread); do not treat the combined binary as LGPL-only based on the AAR POM.",
+  "native_inventory": "docs/licensing/native-binaries.json"
+}

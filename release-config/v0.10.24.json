@@ -1,0 +1,53 @@
+{
+  "hardware": "Innioasis Y1 Type A",
+  "base_firmware": "3.1.2",
+  "android_version": "4.2.2",
+  "signing_certificate_sha256": "de69fd16afa16981e7aa7710f7932ca15b76a8b324037bf94ad828288af4af10",
+  "native_license_audit": "Source-built LGPL-2.1 audio profile: 75 LGPL-labeled modules, 18 contribs; old DVD/GPL implementation evidence absent; sources/notices supplied; modified-signature installation check remains open",
+  "release_date": "2026-11-18",
+  "validation_document": "release-validation.md",
+  "open_publication_checks": [],
+  "recommended_release_checks": [
+    "V4: independently signed modified-library firmware/app hardware installation is documented; separate-key test not performed"
+  ],
+  "project_distribution_basis": {
+    "stock_firmware": "Follow the community developer publishing workflow and user decision; individual manufacturer permission inquiry is not a release prerequisite. Preserve existing component terms and notices.",
+    "plumosamp": "Creator-provided project artwork; retain required regions with new peach icons; omit original lightning marks, slogan, unused sheets/cursors/tutorial text."
+  },
+  "version": "0.10.24",
+  "version_code": 46,
+  "publication_status": "Release package for game-de-it/plumOS-Y1 v0.10.24; see GitHub release for live download availability",
+  "packaging_provenance": {
+    "base_version": "0.10.23",
+    "base_archive_sha256": "714bd22f2fdb3b09c08ed2ec5585a3bcbb69e0896080a163789a9891c3f1a146",
+    "changes": [
+      "UiText: Japanese \u623b\u308b maps to Back in English; Japanese label unchanged",
+      "APK versionName 0.10.24/versionCode 46",
+      "release docs/notices/manifest/source archives"
+    ],
+    "only_changed_java_class": "com/kroot/y1themes/UiText.class",
+    "audio_code_and_native_payload_unchanged": true,
+    "native_source_content_unchanged": true,
+    "firmware_hardware_validation": "0.10.23 full tests retained separately; updated 0.10.24 firmware assembled/checked but not reflashed"
+  },
+  "validation": {
+    "baseline_full_hardware": "0.10.23 Type A: complete flash/boot, audio 39 + 4, volume, speaker/Bluetooth, USB transfer/remount, on-device same-version APK install, standalone controls, click/vibration and shutdown/restart passed; see versioned validation document.",
+    "changed_scope": "Only UiText.class changed among 55 current Java classfiles; manifest version changed. Audio/control/USB implementation, images and native libraries unchanged.",
+    "localization_apk_hardware": "Installed signed 0.10.24 APK on Y1; actual USB page rendered English Back and Japanese \u623b\u308b correctly; original language restored; USB sharing not activated.",
+    "firmware_assembly": "debugfs replacement dumps and e2fsck passed; non-system partition images retained",
+    "current_firmware_hardware": "0.10.24 firmware not flashed; do not relabel 0.10.23 full tests as a new 0.10.24 flash",
+    "native_source": "Unchanged native libraries use byte-identical corresponding-source archive; 116-file source manifest previously verified",
+    "system_file_comparison": "1311 system files compared against verified 0.10.23 image; only app/Y1ThemePlayer.apk changed; firmware inner checksums passed",
+    "apk_payload_comparison": "Only AndroidManifest.xml and classes.dex differ from 0.10.23 non-signature APK entries; skin/font/native and other assets identical"
+  },
+  "tested_binary_sha256": {
+    "plumOS-Y1-v0.10.24-player.apk": "8c2d6e19ff49c45f84f12cf31030c91903e52651a5a3a844a7513de6e7ebf0dd",
+    "plumOS-Y1-v0.10.24-TypeA.zip": "1acc8ba8e4c88d04ed67eef5a6555887d834866c8fb62864565347cfcd324902",
+    "plumOS-Y1-v0.10.24-libvlc-source.tar.gz": "64fa18ba2458f25c09d8d9b66eb00bc9e4ab10b78e46f33ebdea2eae9b1c911d"
+  },
+  "tested_payload_sha256": {
+    "system.img": "c934cbe1f5eb092a9aad486e720cb95f7ca0ebafd00b75f166da40d6346ea73c",
+    "logo.bin": "960401ecf3671a15211b8c30b615bf5dad2fb61990b3c612a9e9286913804ca7"
+  },
+  "release_url": "https://github.com/game-de-it/plumOS-Y1/releases/tag/v0.10.24"
+}

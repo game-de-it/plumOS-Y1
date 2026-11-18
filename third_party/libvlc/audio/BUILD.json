@@ -1,0 +1,68 @@
+{
+  "profile": "plumOS-Y1 audio LGPL-2.1 profile",
+  "jni_commit": "2fca0d2b5eb1d94e2c41e23408e8087358cb983a",
+  "vlc_base_commit": "4c608da16c33560821be7e5c1ad4e34bf5a65398",
+  "abi": "armeabi-v7a",
+  "api": 17,
+  "ndk": "21.4.7075529 (r21e)",
+  "ndk_download_sha256": "ad7ce5467e18d40050dc51b8e7affc3e635c85bd8c59be62de32352328ed467e",
+  "native_build": "--release --license a; no prebuilt contribs",
+  "contrib_packages": [
+    "ffmpeg",
+    "flac",
+    "gme",
+    "gsm",
+    "iconv",
+    "jpeg",
+    "libxml2",
+    "modplug",
+    "mpg123",
+    "ogg",
+    "opus",
+    "soxr",
+    "speex",
+    "taglib",
+    "vorbis",
+    "zlib",
+    "matroska",
+    "ebml"
+  ],
+  "excluded_features": [
+    "DVD/CSS/navigation",
+    "Blu-ray",
+    "video decoding in FFmpeg",
+    "stream output/encoding",
+    "SMB/NFS/UPnP discovery",
+    "Lua",
+    "subtitle rendering",
+    "GPL-labeled VLC modules",
+    "GPL/GNUv3/nonfree FFmpeg dependencies"
+  ],
+  "compatibility_modules": [
+    "android_display",
+    "android_window (option definitions required by the unmodified Java bindings)"
+  ],
+  "retained_features": [
+    "audio file demux/decode",
+    "Android AudioTrack/OpenSL ES output",
+    "equalizer",
+    "software volume",
+    "soxr resampler"
+  ],
+  "java_bindings": "Unmodified classes.jar from libvlc-all 3.7.1; matching Java sources included in source material",
+  "libraries": {
+    "libvlc.so": {
+      "sha256": "7e5ab394184a87235c56fd5fe8ad93fb6decdfa0426961827117eced5d268d15",
+      "bytes": 9999872
+    },
+    "libvlcjni.so": {
+      "sha256": "17122abcebf3f888ad36743ca93b9c397d72f622c14b7412dd834fcf6c4c582c",
+      "bytes": 67160
+    },
+    "libc++_shared.so": {
+      "sha256": "092a44574c247982e265743acb1227e11a2f079a765814fef1b627dbfb2b79d5",
+      "bytes": 554808
+    }
+  },
+  "validation": "See the accompanying device regression report; build success alone does not prove audible output."
+}

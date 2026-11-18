@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "nano6",
+  "name": "nano 第6世代",
+  "nameEn": "nano 6th Gen",
+  "layout": "grid",
+  "colors": {
+    "background": "#191E28",
+    "headerTop": "#353F50",
+    "headerBottom": "#151A25",
+    "text": "#F7F9FC",
+    "muted": "#AAB7CA",
+    "selectedTop": "#65BDE4",
+    "selectedBottom": "#2575B6",
+    "selectedText": "#FFFFFF",
+    "divider": "#4C596D",
+    "progress": "#70C9ED"
+  },
+  "fontSize": 18,
+  "rowHeight": 44
+}

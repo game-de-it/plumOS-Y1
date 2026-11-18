@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "gen4",
+  "name": "第4世代・mini",
+  "nameEn": "4th Gen / mini",
+  "layout": "classic",
+  "colors": {
+    "background": "#DCEAF4",
+    "headerTop": "#F6FBFF",
+    "headerBottom": "#B9CDE1",
+    "text": "#26345B",
+    "muted": "#52658A",
+    "selectedTop": "#6E84B8",
+    "selectedBottom": "#304677",
+    "selectedText": "#FFFFFF",
+    "divider": "#A8BCD1",
+    "progress": "#47659C"
+  },
+  "fontSize": 22,
+  "rowHeight": 50
+}

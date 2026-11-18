@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "himd",
+  "name": "Hi-MD MZ-DH10P",
+  "nameEn": "Hi-MD MZ-DH10P",
+  "layout": "himd",
+  "colors": {
+    "background": "#02070D",
+    "headerTop": "#071726",
+    "headerBottom": "#0B2335",
+    "text": "#C4E9FF",
+    "muted": "#75A8C7",
+    "selectedTop": "#0A3151",
+    "selectedBottom": "#0A3151",
+    "selectedText": "#E7FAFF",
+    "divider": "#23618D",
+    "progress": "#49D8FF"
+  },
+  "fontSize": 17,
+  "rowHeight": 35
+}

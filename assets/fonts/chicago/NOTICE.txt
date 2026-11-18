@@ -1,0 +1,6 @@
+Chicago Kare — Copyright (c) 2024 Duane King
+Source: https://github.com/KingDuane/Chicago-Kare
+MIT license: LICENSE.txt in this directory.
+ChicagoKare-Regular.ttf is used unchanged; cmap.txt lists its supported Unicode codepoints.
+This is a reproduction of Chicago's bitmap appearance. It does not contain Japanese glyphs.
+Missing glyphs use the Android default fallback typeface.

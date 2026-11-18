@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "touch",
+  "name": "touch 初期",
+  "nameEn": "Early touch",
+  "layout": "touch",
+  "colors": {
+    "background": "#1C2635",
+    "headerTop": "#485767",
+    "headerBottom": "#182333",
+    "text": "#FFFFFF",
+    "muted": "#C5CED8",
+    "selectedTop": "#73B8E5",
+    "selectedBottom": "#2D73BC",
+    "selectedText": "#FFFFFF",
+    "divider": "#617388",
+    "progress": "#77C9F3"
+  },
+  "fontSize": 17,
+  "rowHeight": 44
+}

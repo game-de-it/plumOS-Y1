@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "nano5",
+  "name": "nano 第5世代",
+  "nameEn": "nano 5th Gen",
+  "layout": "artfull",
+  "colors": {
+    "background": "#172330",
+    "headerTop": "#4E5863",
+    "headerBottom": "#17212C",
+    "text": "#F7FAFD",
+    "muted": "#C5D2DD",
+    "selectedTop": "#3989B5",
+    "selectedBottom": "#14618A",
+    "selectedText": "#FFFFFF",
+    "divider": "#435362",
+    "progress": "#66CAE9"
+  },
+  "fontSize": 18,
+  "rowHeight": 43
+}

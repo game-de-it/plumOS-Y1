@@ -1,0 +1,38 @@
+{
+  "version": "0.10.21",
+  "release_date": "2026-11-18",
+  "hardware": "Innioasis Y1 Type A",
+  "base_firmware": "3.1.2",
+  "android_version": "4.2.2",
+  "signing_certificate_sha256": "de69fd16afa16981e7aa7710f7932ca15b76a8b324037bf94ad828288af4af10",
+  "tested_binary_sha256": {
+    "plumOS-Y1-v0.10.21-TypeA.zip": "e88deceb5fc453474536687d872c7951b15b0e10252330536af69cf492419da3",
+    "plumOS-Y1-v0.10.21-player.apk": "0cda16e1d818e1498e427c2f19919a6fa806974b2262f079c6539ff6c3417cbc"
+  },
+  "open_publication_checks": [
+    "Stock firmware: manufacturer redistribution permission plus component-specific OSS/source obligations",
+    "Winamp skin: no specific grant found for extracted/modified default artwork on this device",
+    "LibVLC: GPL code confirmed; choose GPL-compliant combined distribution or LGPL-2.1-only rebuild, then supply complete corresponding sources/notices/relink materials"
+  ],
+  "tested_payload_sha256": {
+    "system.img": "fb46de79f1cffd0b6109998866efd35265b3d49c0c44730f5fbd5bc927c6acb2",
+    "logo.bin": "960401ecf3671a15211b8c30b615bf5dad2fb61990b3c612a9e9286913804ca7"
+  },
+  "packaging_provenance": {
+    "original_tested_archive_sha256": "def2b4018146065b6be24dae8782e72b76ef78ca7f59e1fc1a5ad69fbb6f6ba4",
+    "revision": "privacy-and-notices-1",
+    "removed_non_flash_metadata": [
+      ".state",
+      "hwparam.json"
+    ],
+    "runtime_payload_unchanged": true,
+    "updated_or_added_notices": [
+      "README_JA.md",
+      "LIBVLC_README_JA.md",
+      "COPYING.GPL-2.0",
+      "COPYING.GPL-3.0",
+      "COPYING.LGPL-3.0",
+      "COPYING.LLVM"
+    ]
+  }
+}

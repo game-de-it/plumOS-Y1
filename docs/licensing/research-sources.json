@@ -1,0 +1,80 @@
+{
+  "review_date": "2026-11-18",
+  "sources": [
+    {
+      "id": "manufacturer_support",
+      "url": "https://www.innioasis.com/pages/support-details?type=y-1",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "f9f69503b15143791e832dfc77af157ad5c4611ab8a07e95a3b23cfc17ca2612"
+    },
+    {
+      "id": "manufacturer_website_terms",
+      "url": "https://www.innioasis.com/policies/terms-of-service",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "3b89b8a8429c1810b26f2afe8ba6adc537a94520efd98c39720123d61556d7e2"
+    },
+    {
+      "id": "winamp_skin_archive",
+      "url": "https://raw.githubusercontent.com/captbaritone/webamp/master/packages/webamp/assets/skins/base-2.91.wsz",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "cb2e5361a5208878855ae2c6c4a842df6cb71590b2c4405fe8776258c82e59bb"
+    },
+    {
+      "id": "skin_technical_notes",
+      "url": "https://raw.githubusercontent.com/captbaritone/webamp/master/packages/webamp/assets/skins/base-2.91/Skining%20Updates.txt",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "ac5442dff3303add2b197a092d478f6ee6a073ab51eb40e58ab9937e941795bd"
+    },
+    {
+      "id": "lgpl21",
+      "url": "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95"
+    },
+    {
+      "id": "gpl2",
+      "url": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"
+    },
+    {
+      "id": "gpl3",
+      "url": "https://www.gnu.org/licenses/gpl-3.0.txt",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "id": "dvdcss_license",
+      "url": "https://code.videolan.org/videolan/libdvdcss/-/raw/1.4.3/COPYING",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "id": "dvdcss_source_header",
+      "url": "https://code.videolan.org/videolan/libdvdcss/-/raw/1.4.3/src/libdvdcss.c",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "1db5855dd01d796c5529595ce12ee59812c835e8ef97a7801f5fa501fd73bd3b"
+    },
+    {
+      "id": "dvdread_license",
+      "url": "https://code.videolan.org/videolan/libdvdread/-/raw/6.1.3/COPYING",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "d6cb0e9e560f51085556949a84af12b79a00f10ab8b66c752537faf7cd665572"
+    },
+    {
+      "id": "ndk_llvm_license",
+      "url": "https://android.googlesource.com/toolchain/llvm-project/+/a2a1e703c0edb03ba29944e529ccbf457742737b/libcxx/LICENSE.TXT?format=TEXT",
+      "retrieved": true,
+      "sha256_of_retrieved_bytes": "2df883eed85d488ef641ac22f3ce8afb495508b6f87c38847af95ddbf94aea70"
+    }
+  ],
+  "additional_primary_references": [
+    "https://github.com/captbaritone/webamp#license",
+    "https://github.com/captbaritone/webamp/blob/master/LICENSE.txt",
+    "https://docs.videolan.me/vlc-user/en/support/faq/legalconcerns.html",
+    "https://support.winamp.com/terms",
+    "https://winamp.com/legal-creators/general-terms-of-use",
+    "https://winamp.com/legal-creators/legal-notice"
+  ],
+  "scope": "Public documents and pinned local artifacts; no private correspondence, permission request or publication performed."
+}

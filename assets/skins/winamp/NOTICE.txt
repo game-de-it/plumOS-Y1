@@ -1,0 +1,16 @@
+PLUMOSAMP artwork provenance
+
+The development theme uses user-supplied PLUMOSAMP-pixel-redesign artwork,
+described by its creator as made with the original Winamp skin as a reference.
+Only the main panel, active title, playlist header/footer and active transport
+regions are retained in source/. Cursors, unused sprite sheets, the REGION.TXT
+tutorial, inactive title rows and the original slogan are not included.
+The old lightning marks are removed from the imported regions. The peach icon
+is a new pixel drawing defined in tools/build_plumosamp_skin.py.
+The app loads only the generated menu.png and player.png.
+
+The theme ID/layout remains winamp for saved-setting compatibility; its visible
+name is PLUMOSAMP. A visual reference alone is not classified as copied pixels.
+This provenance statement does not assign MIT terms to third-party material or
+claim a legal clearance based on changed-pixel counts. See the bilingual
+distribution review for the remaining provenance/distribution questions.

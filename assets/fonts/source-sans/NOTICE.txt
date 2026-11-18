@@ -1,0 +1,6 @@
+Source Sans 3 Regular / Bold, unmodified TTFs from Adobe.
+Source: https://github.com/adobe-fonts/source-sans/tree/release/TTF
+License: SIL OFL 1.1, LICENSE.txt in this directory.
+Used as a visual approximation for the iPod 5th generation Podium Sans style.
+It is not Apple's original Podium Sans.
+cmap.txt contains supported Unicode codepoints common to Regular and Bold.

@@ -1,0 +1,70 @@
+{
+  "hardware": "Innioasis Y1 Type A",
+  "base_firmware": "3.1.2",
+  "android_version": "4.2.2",
+  "signing_certificate_sha256": "de69fd16afa16981e7aa7710f7932ca15b76a8b324037bf94ad828288af4af10",
+  "native_license_audit": "Source-built LGPL-2.1 audio profile: 75 LGPL-labeled modules, 18 contribs; old DVD/GPL implementation evidence absent; sources/notices supplied; modified-signature installation check remains open",
+  "version": "0.10.23",
+  "version_code": 45,
+  "release_date": "2026-11-18",
+  "validation_document": "release-validation.md",
+  "publication_status": "final Type A firmware hardware checks completed; prepared locally; not published",
+  "open_publication_checks": [
+    "P2: publish binary and both matching source archives with notices/checksums, then verify actual public download access; no publication performed"
+  ],
+  "recommended_release_checks": [
+    "V4: independently signed modified-library firmware/app hardware installation is documented; separate-key test not performed"
+  ],
+  "project_distribution_basis": {
+    "stock_firmware": "Follow the community developer publishing workflow and user decision; individual manufacturer permission inquiry is not a release prerequisite. Preserve existing component terms and notices.",
+    "plumosamp": "Creator-provided project artwork; retain required regions with new peach icons; omit original lightning marks, slogan, unused sheets/cursors/tutorial text."
+  },
+  "packaging_provenance": {
+    "base_version": "0.10.22",
+    "base_archive_sha256": "f8b855b9a53626335e763f10e8b2f055728fdbb7e339561b1f13147232bf358d",
+    "changes": [
+      "APK versionCode 45/versionName 0.10.23",
+      "PLUMOSAMP required artwork regions/new peach icons/visible theme name",
+      "release documentation and component notices"
+    ],
+    "java_and_native_audio_payload_unchanged": true,
+    "native_source_content_unchanged": true,
+    "firmware_hardware_validation": "Final firmware flashed/cold-booted, native/audio/USB/on-device update checks passed; user confirmed standalone controls, click/vibration, USB reconnect, speaker/Bluetooth sound and shutdown/restart."
+  },
+  "validation": {
+    "assembly": "system APK and 3 native copies verified by debugfs dumps; e2fsck passed; unrelated partition images retained",
+    "apk_difference": "Only AndroidManifest.xml, theme JSON and 2 skin PNGs differ from frozen 0.10.22 non-signature payload",
+    "native_library_source": "Unchanged 0.10.22 audio profile with matching full corresponding source archive and notices",
+    "earlier_device_evidence": "0.10.22 audio-format/EQ, MP3/M4A, speaker/Bluetooth results retained separately",
+    "current_firmware_hardware": "Final 0.10.23 Type A flashed/cold-booted; system APK SHA256 matched before local update and after final shutdown/restart; stock frontend disabled; persist/live USB adb after restart.",
+    "plumosamp_preflash_apk": "0.10.23 APK installed in place; real Aviator playback and Home/player captures passed on hardware; temporary screenshot helper removed; audio volume restored",
+    "clean_source_assembly": "Fresh public-source Java/APK assembly using the unchanged verified native inputs matches all 87 non-signature release APK entries; not a second full native rebuild",
+    "system_file_comparison": "1311 system files compared with 0.10.22; only app/Y1ThemePlayer.apk changed; native libraries, wheel/USB policy and other files unchanged",
+    "source_privacy": "262 source inputs and local links verified; 33 EXIF-free images; keys/private paths/device logs/music excluded",
+    "native_source_manifest": "All 116 SHA256 source manifest entries verified; source archive identical to 0.10.22 native source",
+    "audio_formats_eq_after_flash": "39/39 (13 formats x EQ off/flat/bass) passed with A2DP connected; 4/4 ordinary MP3/M4A Android/LibVLC cases passed. Validation audio muted.",
+    "native_runtime_after_flash": "All three in-process native library SHA256 values match source-built release libraries, loaded from /system/lib.",
+    "boost_after_flash": "100/110/120/130 readbacks passed; boost cleared on decrease; playback paused during high system-volume readback checks; original volume restored.",
+    "bluetooth_listening_after_flash": "User confirms headphone audio; A2DP remained connected through automated EQ/format checks.",
+    "usb_disk_transfer_after_flash": "Mac USB mass storage: copied/hash-verified Japanese-name MP3 and M4A plus release APK; safely ejected; Android remounted and library rose 809 to 811; new MP3/M4A passed both engines.",
+    "on_device_apk_update_after_flash": "Settings APK file picker -> equal-version confirmation -> install -> automatic restart passed; updated /data/app APK SHA256 matches release; PLUMOSAMP/click/vibration and music retained.",
+    "post_update_playback": "3/3 EQ cases and 4/4 newly USB-transferred MP3/M4A Android/LibVLC cases passed with A2DP connected.",
+    "first_automated_attempt": "Initial state-read failure was not counted as a pass; focused probe and full repeated run passed without app changes.",
+    "cosmetic_observations": "English USB screen secondary Back row remains Japanese; operation works.",
+    "physical_controls_after_flash": "User confirmed standalone wheel/Center/ring and Android Settings navigation normal.",
+    "click_vibration_after_flash": "User confirmed both follow OFF/ON settings.",
+    "usb_cable_reconnect_after_flash": "User confirmed no stock frontend/storage activation prompt/System UI error and normal player operation.",
+    "speaker_shutdown_restart": "User confirmed speaker playback, shutdown confirmation cancel, actual power-off and restart normal.",
+    "same_version_update_reboot": "After reboot Android selected the byte-identical system APK and removed the duplicate data APK; settings retained. This does not validate cross-version on-device upgrades.",
+    "test_cleanup": "Removed two temporary Japanese-name audio files and their generated metadata; library returned to 809; test helper packages removed; update APK retained in Updates."
+  },
+  "tested_binary_sha256": {
+    "plumOS-Y1-v0.10.23-player.apk": "3b32275d067491764ba2ae42476f51843648883ca95e8fb84be8e73310d14ca2",
+    "plumOS-Y1-v0.10.23-TypeA.zip": "714bd22f2fdb3b09c08ed2ec5585a3bcbb69e0896080a163789a9891c3f1a146",
+    "plumOS-Y1-v0.10.23-libvlc-source.tar.gz": "64fa18ba2458f25c09d8d9b66eb00bc9e4ab10b78e46f33ebdea2eae9b1c911d"
+  },
+  "tested_payload_sha256": {
+    "system.img": "0aa41abaae3e1c1c110dd5ac54401fc282c5d7a5ead78dde53b01d81de44be5d",
+    "logo.bin": "960401ecf3671a15211b8c30b615bf5dad2fb61990b3c612a9e9286913804ca7"
+  }
+}

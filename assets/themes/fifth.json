@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "fifth",
+  "name": "第5世代カラー",
+  "nameEn": "5th Gen Color",
+  "layout": "color",
+  "colors": {
+    "background": "#EFF2F5",
+    "headerTop": "#FFFFFF",
+    "headerBottom": "#C9D4DE",
+    "text": "#202936",
+    "muted": "#647180",
+    "selectedTop": "#6DA6E8",
+    "selectedBottom": "#2867B9",
+    "selectedText": "#FFFFFF",
+    "divider": "#C4CDD5",
+    "progress": "#3278D0"
+  },
+  "fontSize": 17,
+  "rowHeight": 44
+}

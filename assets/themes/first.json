@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "first",
+  "name": "初代モノクロ",
+  "nameEn": "1st Gen Monochrome",
+  "layout": "mono",
+  "colors": {
+    "background": "#C8D1AF",
+    "headerTop": "#C8D1AF",
+    "headerBottom": "#B5C2A2",
+    "text": "#1E2A1D",
+    "muted": "#40533B",
+    "selectedTop": "#33482F",
+    "selectedBottom": "#263C24",
+    "selectedText": "#E5EBD8",
+    "divider": "#71836B",
+    "progress": "#263C24"
+  },
+  "fontSize": 22,
+  "rowHeight": 50
+}

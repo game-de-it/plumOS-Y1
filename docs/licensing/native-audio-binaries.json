@@ -1,0 +1,873 @@
+{
+  "artifact": "plumOS-Y1-LibVLC-audio",
+  "abi": "armeabi-v7a",
+  "finding": "No dvdcss/dvdread definitions found by this limited probe; this alone does not clear all licensing conditions",
+  "confirmed_gpl_component_evidence": {
+    "libdvdcss": false,
+    "libdvdread": false
+  },
+  "upstream_recipe_license_modes": {
+    "g": "default; GPL v3 recipe",
+    "l": "LGPL v3 plus ad clauses recipe",
+    "a": "LGPL v2.1 plus ad clauses recipe"
+  },
+  "limitations": "Symbols prove implementation presence. They do not establish every component version, complete source correspondence, or the final combined-work license version.",
+  "libraries": {
+    "libvlc.so": {
+      "sha256": "7e5ab394184a87235c56fd5fe8ad93fb6decdfa0426961827117eced5d268d15",
+      "bytes": 9999872,
+      "needed_shared_libraries": [
+        "libdl.so",
+        "libc++_shared.so",
+        "libEGL.so",
+        "libGLESv2.so",
+        "libm.so",
+        "libc.so",
+        "libandroid.so",
+        "liblog.so"
+      ],
+      "defined_symbol_evidence": {
+        "libdvdcss": [],
+        "libdvdread": [],
+        "libdvdnav": [],
+        "libbluray": [],
+        "x264": [],
+        "x265": [],
+        "zvbi": []
+      },
+      "embedded_configure_flags": []
+    },
+    "libvlcjni.so": {
+      "sha256": "17122abcebf3f888ad36743ca93b9c397d72f622c14b7412dd834fcf6c4c582c",
+      "bytes": 67160,
+      "needed_shared_libraries": [
+        "libdl.so",
+        "libvlc.so",
+        "liblog.so",
+        "libc.so",
+        "libm.so"
+      ],
+      "defined_symbol_evidence": {
+        "libdvdcss": [],
+        "libdvdread": [],
+        "libdvdnav": [],
+        "libbluray": [],
+        "x264": [],
+        "x265": [],
+        "zvbi": []
+      },
+      "embedded_configure_flags": []
+    },
+    "libc++_shared.so": {
+      "sha256": "092a44574c247982e265743acb1227e11a2f079a765814fef1b627dbfb2b79d5",
+      "bytes": 554808,
+      "needed_shared_libraries": [
+        "libc.so",
+        "libdl.so"
+      ],
+      "defined_symbol_evidence": {
+        "libdvdcss": [],
+        "libdvdread": [],
+        "libdvdnav": [],
+        "libbluray": [],
+        "x264": [],
+        "x265": [],
+        "zvbi": []
+      },
+      "embedded_configure_flags": []
+    }
+  },
+  "module_selection": {
+    "kept": [
+      "libadf_plugin.a",
+      "libadpcm_plugin.a",
+      "libaes3_plugin.a",
+      "libafile_plugin.a",
+      "libaiff_plugin.a",
+      "libamem_plugin.a",
+      "libandroid_audiotrack_plugin.a",
+      "libandroid_display_plugin.a",
+      "libandroid_logger_plugin.a",
+      "libandroid_window_plugin.a",
+      "libaraw_plugin.a",
+      "libasf_plugin.a",
+      "libau_plugin.a",
+      "libaudio_format_plugin.a",
+      "libavcodec_plugin.a",
+      "libavformat_plugin.a",
+      "libcache_block_plugin.a",
+      "libcache_read_plugin.a",
+      "libchorus_flanger_plugin.a",
+      "libcompressor_plugin.a",
+      "libdecomp_plugin.a",
+      "libequalizer_plugin.a",
+      "libes_plugin.a",
+      "libfilesystem_plugin.a",
+      "libflac_plugin.a",
+      "libfloat_mixer_plugin.a",
+      "libg711_plugin.a",
+      "libgain_plugin.a",
+      "libgme_plugin.a",
+      "libhds_plugin.a",
+      "libinflate_plugin.a",
+      "libinteger_mixer_plugin.a",
+      "libkaraoke_plugin.a",
+      "liblpcm_plugin.a",
+      "libmkv_plugin.a",
+      "libmod_plugin.a",
+      "libmp4_plugin.a",
+      "libmpg123_plugin.a",
+      "libnormvol_plugin.a",
+      "libogg_plugin.a",
+      "libopensles_android_plugin.a",
+      "libopus_plugin.a",
+      "libpacketizer_a52_plugin.a",
+      "libpacketizer_copy_plugin.a",
+      "libpacketizer_dts_plugin.a",
+      "libpacketizer_flac_plugin.a",
+      "libpacketizer_mlp_plugin.a",
+      "libpacketizer_mpeg4audio_plugin.a",
+      "libpacketizer_mpegaudio_plugin.a",
+      "libparam_eq_plugin.a",
+      "libplaylist_plugin.a",
+      "libprefetch_plugin.a",
+      "librawaud_plugin.a",
+      "librecord_plugin.a",
+      "libremap_plugin.a",
+      "libscaletempo_pitch_plugin.a",
+      "libscaletempo_plugin.a",
+      "libsimple_channel_mixer_plugin.a",
+      "libskiptags_plugin.a",
+      "libsmf_plugin.a",
+      "libsoxr_plugin.a",
+      "libspatializer_plugin.a",
+      "libspdif_plugin.a",
+      "libstereo_widen_plugin.a",
+      "libtaglib_plugin.a",
+      "libtospdif_plugin.a",
+      "libtrivial_channel_mixer_plugin.a",
+      "libtta_plugin.a",
+      "libugly_resampler_plugin.a",
+      "libuleaddvaudio_plugin.a",
+      "libvoc_plugin.a",
+      "libvolume_neon_plugin.a",
+      "libvorbis_plugin.a",
+      "libwav_plugin.a",
+      "libxa_plugin.a"
+    ],
+    "excluded": [
+      {
+        "module": "libaccess_concat_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libaccess_imem_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libaccess_mms_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libadaptive_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libaddonsfsstorage_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libaddonsvorepository_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libadjust_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libadummy_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libalphamask_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libanaglyph_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libantiflicker_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libattachment_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libaudiobargraph_a_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libaudiobargraph_v_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libaudioscrobbler_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libavi_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libavio_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libball_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libblend_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libblendbench_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libbluescreen_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libcaf_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libcanvas_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libcc_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libcdg_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libchain_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libchroma_yuv_neon_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libclone_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libcolorthres_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libconsole_logger_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libcroppadd_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libcvdsub_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libddummy_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libdeinterlace_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdemux_cdg_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdemux_stl_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdemuxdump_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdiracsys_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdirectory_demux_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdmxmus_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdolby_surround_decoder_plugin.a",
+        "reason": "GPL module metadata"
+      },
+      {
+        "module": "libdtv_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdummy_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdvbsub_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libdynamicoverlay_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libedgedetection_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libegl_android_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "liberase_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libexport_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libextract_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libfb_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libfile_keystore_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libfile_logger_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libfingerprinter_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libflacsys_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libflaschen_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libfolder_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libfps_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libfreeze_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libftp_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libgaussianblur_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libgestures_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libglconv_android_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libgradfun_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libgradient_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libgrain_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libgrey_yuv_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libh26x_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libheadphone_channel_mixer_plugin.a",
+        "reason": "GPL module metadata"
+      },
+      {
+        "module": "libhotkeys_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libhqdn3d_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libhttp_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libhttps_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libi420_10_p010_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libi420_nv12_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libi420_rgb_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libi420_yuy2_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libi422_i420_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libi422_yuy2_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libidummy_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libimage_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libimem_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libinvert_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libiomx_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libjpeg_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "liblogger_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "liblogo_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libmagnify_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libmarq_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libmediacodec_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libmediadirs_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libmemory_keystore_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libmirror_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libmjpeg_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libmono_plugin.a",
+        "reason": "GPL module metadata"
+      },
+      {
+        "module": "libmosaic_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libmotion_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libmotionblur_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libmotiondetect_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libmpgv_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libnetsync_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libnoseek_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libnsc_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libnsv_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libnuv_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "liboggspots_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "liboldmovie_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "liboldrc_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libpacketizer_av1_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpacketizer_avparser_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpacketizer_dirac_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpacketizer_h264_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpacketizer_hevc_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpacketizer_mpeg4video_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpacketizer_mpegvideo_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpacketizer_vc1_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpodcast_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libposterize_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libps_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libpsychedelic_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libpuzzle_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libpva_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "librawdv_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "librawvid_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "librawvideo_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libreal_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libripple_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "librist_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "librotate_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "librss_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "librtp_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "librv32_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsap_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libsatip_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libscale_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libscene_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libscte18_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libscte27_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsdp_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsepia_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsharpen_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libshm_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libspeex_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libspudec_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libstats_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libstl_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsubsdec_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsubsdelay_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsubstx3g_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsubsusf_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsubtitle_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsvcdsub_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libsyslog_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libtcp_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libtdummy_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libtelx_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libtextst_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libtimecode_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libtransform_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libttml_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libty_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libudp_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libvc1_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libvdr_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libvdummy_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libvhs_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libvisual_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libvmem_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libvobsub_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libwall_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libwave_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libwebvtt_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libxml_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libyuv_plugin.a",
+        "reason": "upstream module blacklist"
+      },
+      {
+        "module": "libyuv_rgb_neon_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libyuvp_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libyuy2_i420_plugin.a",
+        "reason": "not required by the local audio profile"
+      },
+      {
+        "module": "libyuy2_i422_plugin.a",
+        "reason": "not required by the local audio profile"
+      }
+    ]
+  }
+}
