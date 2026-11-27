@@ -1,8 +1,8 @@
 # plumOS-Y1
 
-[English](README.md) | [ユーザーガイド](docs/ja/user-guide.md) | [インストール手順](docs/releases/v0.10.24.ja.md)
+[English](README.md) | [ユーザーガイド](docs/ja/user-guide.md) | [v0.10.26更新手順](docs/releases/v0.10.26.ja.md) | [初回導入](docs/releases/v0.10.24.ja.md)
 
-[v0.10.24をダウンロード](https://github.com/game-de-it/plumOS-Y1/releases/tag/v0.10.24)
+[v0.10.26をダウンロード](https://github.com/game-de-it/plumOS-Y1/releases/tag/v0.10.26)
 
 plumOS-Y1は、**Innioasis Y1 Type A**向けの音楽プレイヤーFWです。ホイールで操作する音楽アプリ、10種類のテーマ、USBでの音楽転送、各種本体設定を利用できます。Android 4.2.2／純正FW 3.1.2をベースにしています。
 
@@ -29,15 +29,15 @@ plumOS-Y1は、**Innioasis Y1 Type A**向けの音楽プレイヤーFWです。�
 
 ## インストールと更新
 
-初回導入と旧開発FWから0.10.24への更新には、**FW ZIP**を使用してください。導入前に音楽などをバックアップし、本体のタイプを確認してください。
+初回導入には**v0.10.24のFW ZIP**を使用してください。v0.10.24を導入済みなら、新しいAPKだけでv0.10.26へ更新でき、FWの再書き込みは不要です。
 
 | ファイル | 用途 |
 | --- | --- |
 | `plumOS-Y1-v0.10.24-TypeA.zip` | アプリ・本体設定・起動ロゴを含むType A用FW |
-| `plumOS-Y1-v0.10.24-player.apk` | 対応するplumOS-Y1 FWを導入済みの本体向けアプリ更新 |
+| `plumOS-Y1-v0.10.26-player.apk` | v0.10.24以降のplumOS-Y1 FWを導入済みの本体向けアプリ更新 |
 | `SHA256SUMS` | ダウンロードした配布物のチェックサム確認 |
 
-[Updater CEを使うインストール手順](docs/releases/v0.10.24.ja.md)に従って導入してください。APKはアプリ単体の更新用です。初回導入やFW全体の更新にはZIPを使用してください。
+[初回導入手順](docs/releases/v0.10.24.ja.md)または[v0.10.26更新手順](docs/releases/v0.10.26.ja.md)に従ってください。APKはアプリ単体の更新用です。
 
 導入後のアプリ更新は、APKを音楽ディスクの`Updates`へコピーし、PCで取り出してUSB共有を終了した後、本体の**設定 → アプリを更新**から選びます。
 

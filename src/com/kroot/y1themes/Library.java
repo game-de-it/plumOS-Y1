@@ -79,12 +79,7 @@ final class Library {
             if (tracks.size() >= 20000) { complete[0] = false; break; }
             if (f.getName().startsWith(".")) continue;
             if (f.isDirectory()) { scan(f, tracks, cached, updated, stats, complete, depth + 1); continue; }
-            String name = f.getName().toLowerCase(java.util.Locale.US);
-            if (name.endsWith(".mp3") || name.endsWith(".m4a") || name.endsWith(".aac") ||
-                    name.endsWith(".flac") || name.endsWith(".ogg") || name.endsWith(".wav") ||
-                    name.endsWith(".aif") || name.endsWith(".aiff") || name.endsWith(".aifc") ||
-                    name.endsWith(".wma") || name.endsWith(".ape") || name.endsWith(".opus") ||
-                    name.endsWith(".wv") || name.endsWith(".mka") || name.endsWith(".alac") || name.endsWith(".caf")) {
+            if (isAudioFile(f)) {
                 String path = f.getAbsolutePath();
                 if (updated.containsKey(path)) continue;
                 long size = f.length(), modified = f.lastModified();
@@ -99,7 +94,16 @@ final class Library {
         }
     }
 
-    private static Track readMetadata(String path) {
+    static boolean isAudioFile(File file) {
+        String name = file.getName().toLowerCase(java.util.Locale.US);
+        return file.isFile() && (name.endsWith(".mp3") || name.endsWith(".m4a") || name.endsWith(".aac") ||
+                name.endsWith(".flac") || name.endsWith(".ogg") || name.endsWith(".wav") ||
+                name.endsWith(".aif") || name.endsWith(".aiff") || name.endsWith(".aifc") ||
+                name.endsWith(".wma") || name.endsWith(".ape") || name.endsWith(".opus") ||
+                name.endsWith(".wv") || name.endsWith(".mka") || name.endsWith(".alac") || name.endsWith(".caf"));
+    }
+
+    static Track readMetadata(String path) {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         try {
             retriever.setDataSource(path);

@@ -88,6 +88,24 @@ public final class MainActivity extends Activity {
     private org.videolan.libvlc.MediaPlayer vlcPlayer;
     private int playbackSerial;
     private int boostLevel;
+    private long abStartMs = -1, abEndMs = -1;
+    private long lastAbSeekMs;
+    private final Runnable abLoop = new Runnable() {
+        @Override public void run() {
+            if (abStartMs < 0 || abEndMs < 0 || screen == null) return;
+            long now = SystemClock.uptimeMillis();
+            if (isPlaying() && playbackPositionMs() >= abEndMs && now - lastAbSeekMs >= 500) {
+                lastAbSeekMs = now;
+                try {
+                    if (player != null) player.seekTo((int)abStartMs);
+                    else if (vlcPlayer != null) vlcPlayer.setTime(abStartMs);
+                } catch (Exception ignored) {}
+                screen.invalidate();
+            }
+            screen.postDelayed(this, 100);
+        }
+    };
+    private int listFirst;
     private final BroadcastReceiver outputChange = new BroadcastReceiver() {
         @Override public void onReceive(Context context, Intent intent) {
             if (boostLevel == 0) return;
@@ -177,6 +195,33 @@ public final class MainActivity extends Activity {
     private final java.util.concurrent.ExecutorService directoryWorker =
             java.util.concurrent.Executors.newSingleThreadExecutor();
     private String message = "";
+    private String observedMessage = "";
+    private final Runnable clearTransientMessage = new Runnable() {
+        @Override public void run() {
+            if (message.equals(observedMessage)) {
+                message = "";
+                if (screen != null) screen.invalidate();
+            }
+        }
+    };
+    private boolean persistentMessage() {
+        return message.equals(tr("差分を確認しています")) ||
+                message.equals(tr("キャッシュを再構築しています")) ||
+                message.equals(tr("切り替え中…")) ||
+                message.equals(tr("APKを読み込み中…")) ||
+                message.equals(tr("APKを確認しています…")) ||
+                message.equals(tr("読み込み中")) ||
+                message.equals(tr("検索中…"));
+    }
+    private String seekMessage = "";
+    private final Runnable clearSeekMessage = new Runnable() {
+        @Override public void run() {
+            if (message.equals(seekMessage)) {
+                message = "";
+                if (screen != null) screen.invalidate();
+            }
+        }
+    };
     private Screen screen;
     private AudioManager audio;
     private long marqueeStartMs = SystemClock.uptimeMillis();
@@ -412,14 +457,29 @@ public final class MainActivity extends Activity {
                 final long started = SystemClock.uptimeMillis();
                 final List<File> folders = new ArrayList<File>();
                 final List<Library.Track> songs = new ArrayList<Library.Track>();
+                final java.util.HashMap<String, Library.Track> known =
+                        new java.util.HashMap<String, Library.Track>();
+                for (Library.Track track : snapshot) known.put(track.path, track);
                 File[] entries = target.listFiles();
-                if (entries != null) for (File entry : entries)
-                    if (!entry.getName().startsWith(".") && entry.isDirectory()) folders.add(entry);
+                if (entries != null) for (File entry : entries) {
+                    if (entry.getName().startsWith(".")) continue;
+                    if (entry.isDirectory()) folders.add(entry);
+                    else if (Library.isAudioFile(entry)) {
+                        Library.Track track = known.get(entry.getAbsolutePath());
+                        songs.add(track != null ? track : Library.readMetadata(entry.getAbsolutePath()));
+                    }
+                }
                 java.util.Collections.sort(folders, new java.util.Comparator<File>() {
                     public int compare(File a, File b) { return a.getName().compareToIgnoreCase(b.getName()); }
                 });
-                for (Library.Track track : snapshot)
-                    if (path.equals(new File(track.path).getParent())) songs.add(track);
+                java.util.Collections.sort(songs, new java.util.Comparator<Library.Track>() {
+                    public int compare(Library.Track a, Library.Track b) {
+                        String left = fileNameFirst ? a.fileName : a.title;
+                        String right = fileNameFirst ? b.fileName : b.title;
+                        int order = left.compareToIgnoreCase(right);
+                        return order != 0 ? order : a.fileName.compareToIgnoreCase(b.fileName);
+                    }
+                });
                 android.util.Log.i("Y1Scan", "directory folders=" + folders.size() +
                         " songs=" + songs.size() + " elapsedMs=" + (SystemClock.uptimeMillis()-started));
                 runOnUiThread(new Runnable() {
@@ -428,6 +488,23 @@ public final class MainActivity extends Activity {
                                 !path.equals(currentDirectory.getAbsolutePath()) || isFinishing()) return;
                         directoryFolders.clear(); directoryFolders.addAll(folders);
                         directorySongs.clear(); directorySongs.addAll(songs);
+                        java.util.HashSet<String> paths = new java.util.HashSet<String>();
+                        for (Library.Track track : tracks) paths.add(track.path);
+                        String playingPath = playingIndex >= 0 && playingIndex < tracks.size() ?
+                                tracks.get(playingIndex).path : null;
+                        boolean added = false;
+                        for (Library.Track track : songs)
+                            if (paths.add(track.path)) { tracks.add(track); added = true; }
+                        if (added) {
+                            sortTracksWithoutRefresh();
+                            playingIndex = -1;
+                            if (playingPath != null) for (int i=0; i<tracks.size(); i++)
+                                if (playingPath.equals(tracks.get(i).path)) { playingIndex = i; break; }
+                            LinkedHashSet<String> names = new LinkedHashSet<String>();
+                            for (Library.Track track : tracks) names.add(track.album);
+                            albums = new ArrayList<String>(names);
+                            java.util.Collections.sort(albums);
+                        }
                         directoryLoading = false;
                         if (page == Page.DIRECTORY) {
                             if (directoryFocusPath != null) {
@@ -503,7 +580,13 @@ public final class MainActivity extends Activity {
         navigate(Page.SETTINGS);
         selection = setting.ordinal();
     }
-    private void navigate(Page target) { page = target; selection = 0; message = ""; marqueeStartMs = SystemClock.uptimeMillis(); screen.invalidate(); }
+    private void navigate(Page target) { page = target; selection = 0; listFirst = 0; message = ""; marqueeStartMs = SystemClock.uptimeMillis(); screen.invalidate(); }
+    private int visibleStart(int visible, int total) {
+        listFirst = Math.max(0, Math.min(listFirst, Math.max(0, total - visible)));
+        if (selection < listFirst) listFirst = selection;
+        else if (selection >= listFirst + visible) listFirst = selection - visible + 1;
+        return listFirst;
+    }
     private void activate() {
         if (apkInstalling) return;
         if (page == Page.PLAYER) {
@@ -515,6 +598,7 @@ public final class MainActivity extends Activity {
                 case 4: playMode = (playMode + 1) % PLAY_MODES.length;
                     getPreferences(0).edit().putInt("playMode", playMode).apply();
                     message = tr(PLAY_MODES[playMode]); screen.invalidate(); break;
+                case 5: cycleAbRepeat(); break;
             }
             return;
         }
@@ -724,7 +808,7 @@ public final class MainActivity extends Activity {
         if (page == Page.EQ_BANDS && editingBand) { adjustBand(amount); return; }
         if (page == Page.PLAYER) {
             int previous = selection;
-            selection = Math.max(0, Math.min(4, selection + amount));
+            selection = Math.max(0, Math.min(5, selection + amount));
             if (selection != previous) cursorFeedback();
             screen.invalidate();
             return;
@@ -744,6 +828,10 @@ public final class MainActivity extends Activity {
     }
     private void sortTracks() {
         shuffleHistory.clear();
+        sortTracksWithoutRefresh();
+        refreshDirectory();
+    }
+    private void sortTracksWithoutRefresh() {
         java.util.Collections.sort(tracks, new java.util.Comparator<Library.Track>() {
             public int compare(Library.Track a, Library.Track b) {
                 String left = fileNameFirst ? a.fileName : a.title;
@@ -752,7 +840,6 @@ public final class MainActivity extends Activity {
                 return order != 0 ? order : a.fileName.compareToIgnoreCase(b.fileName);
             }
         });
-        refreshDirectory();
     }
     private void launchAction(String action) {
         try { startActivity(new Intent(action)); }
@@ -1001,6 +1088,7 @@ public final class MainActivity extends Activity {
     }
     private void playTrack(int index) {
         if (index < 0 || index >= tracks.size()) return;
+        clearAbRepeat();
         releasePlayback();
         if (cover != null) { cover.recycle(); cover = null; }
         int focus = page == Page.PLAYER ? selection : 0;
@@ -1229,6 +1317,13 @@ public final class MainActivity extends Activity {
         playTrack(tracks.indexOf(queue.get(nextPosition)));
     }
     private void onTrackEnded() {
+        if (abStartMs >= 0 && abEndMs >= 0) {
+            try {
+                if (player != null) { player.seekTo((int)abStartMs); player.start(); }
+                else if (vlcPlayer != null) { vlcPlayer.setTime(abStartMs); vlcPlayer.play(); }
+            } catch (Exception ignored) {}
+            return;
+        }
         if (playMode == 2) { playTrack(playingIndex); return; }
         List<Library.Track> queue = playbackQueue();
         if (playMode == 0 && !queue.isEmpty() && playingIndex >= 0 &&
@@ -1243,19 +1338,61 @@ public final class MainActivity extends Activity {
                 vlcPlayer != null ? vlcPlayer.getTime() : 0; }
         catch (Exception ignored) { return 0; }
     }
+    private void clearAbRepeat() {
+        if (screen != null) screen.removeCallbacks(abLoop);
+        abStartMs = abEndMs = -1;
+        lastAbSeekMs = 0;
+    }
+    private void cycleAbRepeat() {
+        if (player == null && vlcPlayer == null) return;
+        if (abStartMs < 0) {
+            abStartMs = playbackPositionMs();
+            abEndMs = -1;
+            message = "";
+        } else if (abEndMs < 0) {
+            long position = playbackPositionMs();
+            if (position < abStartMs + 1000) {
+                message = tr("BはAより後に設定"); screen.invalidate(); return;
+            }
+            abEndMs = position;
+            screen.removeCallbacks(abLoop);
+            screen.post(abLoop);
+            message = "";
+        } else {
+            clearAbRepeat();
+            message = "";
+        }
+        screen.invalidate();
+    }
     private void seek(int direction, long heldMs) {
         try {
             long duration = player != null ? player.getDuration() : vlcPlayer != null ? vlcPlayer.getLength() : 0;
             if (duration <= 0) { message = tr("シークできません"); screen.invalidate(); return; }
-            long distance = Math.min(duration, Math.max(0, heldMs) * 10);
+            long distance = seekDistanceMs(heldMs, duration);
             long target = Math.max(0, Math.min(duration-1000,
                     skipStartPositionMs + direction*distance));
             if (player != null) player.seekTo((int)target); else if (vlcPlayer != null) vlcPlayer.setTime(target);
             message = tr(direction > 0 ? "早送り " : "巻き戻し ") + formatTime((int)target);
+            seekMessage = message;
+            screen.removeCallbacks(clearSeekMessage);
+            screen.postDelayed(clearSeekMessage, 1500);
             screen.invalidate();
         } catch (Exception error) { message = tr("シークできません"); screen.invalidate(); }
     }
+    private long seekDistanceMs(long heldMs, long durationMs) {
+        long elapsed = Math.max(0, heldMs);
+        if (elapsed >= 50000000) return durationMs;
+        long blocks = elapsed / 5000;
+        long remainder = elapsed % 5000;
+        long completed = 5000 * (10 * blocks + 3 * blocks * (blocks - 1) / 2);
+        return Math.min(durationMs, completed + remainder * (10 + 3 * blocks));
+    }
     private String formatTime(int ms) { int s=Math.max(0,ms/1000); return (s/60)+":"+(s%60<10?"0":"")+(s%60); }
+    private String playModeText() {
+        return abStartMs < 0 ? tr(PLAY_MODES[playMode]) :
+                "A-B " + formatTime((int)abStartMs) +
+                (abEndMs < 0 ? "" : "-" + formatTime((int)abEndMs));
+    }
     private void adjustVolume(int direction) {
         int max = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int current = audio.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -1364,6 +1501,9 @@ public final class MainActivity extends Activity {
         super.onPause();
     }
     @Override protected void onDestroy() {
+        if (screen != null) screen.removeCallbacks(clearTransientMessage);
+        if (screen != null) screen.removeCallbacks(clearSeekMessage);
+        if (screen != null) screen.removeCallbacks(abLoop);
         ++directoryScanSerial;
         ++libraryScanSerial;
         directoryWorker.shutdownNow();
@@ -1670,6 +1810,9 @@ public final class MainActivity extends Activity {
                 c.drawCircle(cx-9,cy+2,3,p);
                 c.drawCircle(cx,cy-4,3,p);
                 c.drawCircle(cx+9,cy+4,3,p);
+            } else if (index == 5) {
+                text(c, abStartMs < 0 ? "A-B" : abEndMs < 0 ? "A→B" : "A↔B",
+                        cx-18, cy+5, 14, color, true, 40);
             } else if (playMode == 0) {
                 p.setStyle(Paint.Style.STROKE);
                 c.drawLine(cx-12,cy-6,cx+5,cy-6,p);
@@ -1777,7 +1920,7 @@ public final class MainActivity extends Activity {
         private void hiMdMenu(Canvas c) {
             hiMdFrame(c, title());
             int total = count(), visible = 7;
-            int first = Math.max(0, selection - visible + 1);
+            int first = visibleStart(visible, total);
             for (int i = first; i < total && i < first + visible; i++) {
                 int y = 53 + (i - first) * 37;
                 if (i == selection) fill(c, 25, y - 2, 430, 35, 0xFF0A3151);
@@ -1856,21 +1999,21 @@ public final class MainActivity extends Activity {
             int level = audio.getStreamVolume(AudioManager.STREAM_MUSIC);
             int max = Math.max(1, audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
             String status = time(elapsed) + "/" + time(duration) + "  " +
-                    tr("音量") + (level + boostLevel) + "/" + max + "  " + tr(PLAY_MODES[playMode]);
+                    tr("音量") + (level + boostLevel) + "/" + max + "  " + playModeText();
             hiMdText(c, hiMdFont10, status, 129, 324, 1.1f,
                     boostLevel > 0 ? 0xFFFF7777 : 0xFF75A8C7, 273, false);
             fill(c, 0, 338, 480, 22, 0xFF06111E);
-            for (int i = 0; i < 5; i++) {
-                int x = i * 96;
-                if (i == selection) fill(c, x + 2, 339, 92, 20, 0xFF0A3151);
-                controlIcon(c, i, x + 48, 348,
+            for (int i = 0; i < 6; i++) {
+                int x = i * 80;
+                if (i == selection) fill(c, x + 2, 339, 76, 20, 0xFF0A3151);
+                controlIcon(c, i, x + 40, 348,
                         i == selection ? 0xFF49D8FF : 0xFF75A8C7);
             }
         }
         private void winampMenu(Canvas c) {
             skin(c, winampMenuArt);
             int total = count(), visible = 8;
-            int first = Math.max(0, selection - visible + 1);
+            int first = visibleStart(visible, total);
             for (int i = first; i < total && i < first + visible; i++) {
                 int y = 38 + (i - first) * 32;
                 if (i == selection) fill(c, 20, y, 440, 29, 0xFF101B34);
@@ -1926,7 +2069,7 @@ public final class MainActivity extends Activity {
             int max = Math.max(1, audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
             text(c, tr("音量") + " " + (level + boostLevel) + "/" + max,
                     310, 100, 13, boostLevel > 0 ? 0xFFFF7777 : 0xFF00E900, false, 150);
-            text(c, tr(PLAY_MODES[playMode]), 310, 118, 12, 0xFFB7EE8F, false, 150);
+            text(c, playModeText(), 310, 118, 12, 0xFFB7EE8F, false, 150);
             float ratio = duration > 0 ? Math.max(0, Math.min(1, elapsed/(float)duration)) : 0;
             fill(c, 51, 128, 373 * ratio, 4, 0xFFF5CA55);
             fill(c, 19, 242, 441, 28, 0xFF101B34);
@@ -1936,14 +2079,14 @@ public final class MainActivity extends Activity {
             text(c, "02.", 23, 291, 15, 0xFFA6B2AA, true, 40);
             text(c, metadata(track.artist), 75, 291, 15, theme.text, false, 335);
             winampFooterText(c, time(elapsed) + "/" + time(duration));
-            // The device's wheel focuses five actions; the original transport
+            // The device's wheel focuses six actions; the original transport
             // sprite is decorative, and this row exposes the actual bindings.
             fill(c, 0, 333, 480, 27, 0xFF29293D);
-            for (int i = 0; i < 5; i++) {
-                int x = i * 96;
-                fill(c, x + 2, 335, 92, 23, i == selection ? 0xFF3E3C60 : 0xFF202033);
-                if (i == selection) fill(c, x + 4, 355, 88, 2, 0xFF00E900);
-                controlIcon(c, i, x + 48, 345.5f,
+            for (int i = 0; i < 6; i++) {
+                int x = i * 80;
+                fill(c, x + 2, 335, 76, 23, i == selection ? 0xFF3E3C60 : 0xFF202033);
+                if (i == selection) fill(c, x + 4, 355, 72, 2, 0xFF00E900);
+                controlIcon(c, i, x + 40, 345.5f,
                         i == selection ? 0xFF00E900 : 0xFFC9D3C3);
             }
         }
@@ -2009,8 +2152,8 @@ public final class MainActivity extends Activity {
                 }
             }
             int row = theme.rowHeight;
-            int visible = Math.max(1, (theme.layout.equals("mono") ? 278 : 304) / row);
-            int first = Math.max(0, selection - visible + 1);
+            int visible = Math.max(1, 318 / row);
+            int first = visibleStart(visible, total);
             for (int i = first; i < total && i < first + visible; i++) {
                 float y = 42 + (i-first)*row;
                 float width = settingsPage ? 480 : theme.layout.equals("split") ? 228 :
@@ -2067,8 +2210,8 @@ public final class MainActivity extends Activity {
                         180, 17, theme.muted, false);
             }
             if (message.length() > 0) {
-                fill(c, 0, 329, 480, 31, theme.headerBottom);
-                text(c, message, 10, 350, 14, theme.text, false, 450);
+                fill(c, 0, 0, 480, 38, theme.headerBottom);
+                text(c, message, 10, 26, 14, theme.text, false, 455);
             }
         }
         private void equalizerBands(Canvas c) {
@@ -2173,29 +2316,33 @@ public final class MainActivity extends Activity {
                 boostLevel = 0;
                 if (vlcPlayer != null) vlcPlayer.setVolume(100);
             }
-            if (message.length() > 0) text(c, message, 12, 283, 13, theme.text, false, 230);
+            boolean splitMode = theme.layout.equals("split") || theme.layout.equals("color");
+            if (message.length() > 0)
+                text(c, message, splitMode ? 264 : 12, 283, 13, theme.text, false,
+                        splitMode ? 195 : 230);
             boolean leftVolume = theme.layout.equals("mono") || theme.layout.equals("mono3") ||
                     theme.layout.equals("grid");
             int background = theme.background;
             int brightness = (Color.red(background)*3 + Color.green(background)*6 +
                     Color.blue(background))/10;
             int boostColor = brightness < 130 ? 0xFFFF7777 : 0xFFB00020;
-            text(c, tr("音量") + " " + (level + boostLevel) + "/" + max,
-                    leftVolume ? 12 : 263, 283, 14,
-                    boostLevel > 0 ? boostColor : theme.muted, boostLevel > 0, 140);
-            boolean splitMode = theme.layout.equals("split") || theme.layout.equals("color");
+            if (message.length() == 0 || !leftVolume && !splitMode)
+                text(c, tr("音量") + " " + (level + boostLevel) + "/" + max,
+                        leftVolume ? 12 : 263, 283, 14,
+                        boostLevel > 0 ? boostColor : theme.muted, boostLevel > 0, 140);
             boolean classicMode = theme.layout.equals("classic");
             boolean artMode = theme.layout.equals("artfull");
             if (artMode) fill(c, 16, 194, 218, 29, 0x88000000);
-            text(c, tr("再生種類:") + " " + tr(PLAY_MODES[playMode]),
-                    splitMode ? 264 : classicMode ? 248 : artMode ? 23 : leftVolume ? 263 : 12,
-                    splitMode || classicMode ? 197 : artMode ? 214 : 283, 14,
-                    artMode ? Color.WHITE : theme.text, true, 203);
-            for (int i = 0; i < 5; i++) {
-                float x = i * 96;
-                if (i == selection) grad(c, x, 333, 96, 27, theme.selectedTop, theme.selectedBottom);
-                else fill(c, x, 333, 95, 27, theme.headerBottom);
-                controlIcon(c, i, x + 48, 346.5f,
+            if (message.length() == 0 || splitMode || classicMode || artMode || leftVolume)
+                text(c, abStartMs < 0 ? tr("再生種類:") + " " + playModeText() : playModeText(),
+                        splitMode ? 264 : classicMode ? 248 : artMode ? 23 : leftVolume ? 263 : 12,
+                        splitMode || classicMode ? 197 : artMode ? 214 : 283, 14,
+                        artMode ? Color.WHITE : theme.text, true, 203);
+            for (int i = 0; i < 6; i++) {
+                float x = i * 80;
+                if (i == selection) grad(c, x, 333, 80, 27, theme.selectedTop, theme.selectedBottom);
+                else fill(c, x, 333, 79, 27, theme.headerBottom);
+                controlIcon(c, i, x + 40, 346.5f,
                         i == selection ? theme.selectedText : theme.text);
             }
         }
@@ -2208,6 +2355,12 @@ public final class MainActivity extends Activity {
         }
         @Override protected void onDraw(Canvas real) {
             super.onDraw(real);
+            if (!message.equals(observedMessage)) {
+                observedMessage = message;
+                removeCallbacks(clearTransientMessage);
+                if (message.length() > 0 && !persistentMessage() && !message.equals(seekMessage))
+                    postDelayed(clearTransientMessage, 2500);
+            }
             if (theme == null) return;
             marqueeActive = false;
             real.save();

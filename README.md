@@ -1,8 +1,8 @@
 # plumOS-Y1
 
-[日本語](README_JA.md) | [User Guide](docs/en/user-guide.md) | [Installation](docs/releases/v0.10.24.en.md)
+[日本語](README_JA.md) | [User Guide](docs/en/user-guide.md) | [v0.10.26 update](docs/releases/v0.10.26.en.md) | [First installation](docs/releases/v0.10.24.en.md)
 
-[Download v0.10.24](https://github.com/game-de-it/plumOS-Y1/releases/tag/v0.10.24)
+[Download v0.10.26](https://github.com/game-de-it/plumOS-Y1/releases/tag/v0.10.26)
 
 plumOS-Y1 is music-player firmware for the **Innioasis Y1 Type A**. It provides a wheel-operated music app, ten themes, USB music transfer and device settings, based on stock firmware 3.1.2 / Android 4.2.2.
 
@@ -12,7 +12,7 @@ plumOS-Y1 is music-player firmware for the **Innioasis Y1 Type A**. It provides 
 
 - Browse albums, songs and directories, with Japanese filenames and scrolling long titles.
 - Play MP3, M4A, FLAC, WAV, Ogg, Opus and other music formats.
-- Ten-band EQ, repeat/shuffle, and hold-to-seek controls.
+- Ten-band EQ, repeat/shuffle, A-B repeat, and accelerated hold-to-seek controls.
 - Ten themes inspired by music players, with font fallback for Japanese and other text.
 - USB disk transfer through Finder or Windows Explorer, with background library updates.
 - Bluetooth settings, brightness, click sound, vibration, FM radio and a shutdown timer.
@@ -29,15 +29,15 @@ The app replaces the stock frontend. Stock photo, e-book, calculator and calenda
 
 ## Install and update
 
-Use the **firmware ZIP** for first installation and upgrades from earlier development firmware to 0.10.24. Back up music and confirm the hardware type before flashing.
+Use the **v0.10.24 firmware ZIP** for first installation. If v0.10.24 is already installed, update to v0.10.26 using only the new APK; no firmware flash is needed.
 
 | File | Purpose |
 | --- | --- |
 | `plumOS-Y1-v0.10.24-TypeA.zip` | Type A firmware with the app, device configuration and boot logo |
-| `plumOS-Y1-v0.10.24-player.apk` | Player update for a device already running compatible plumOS-Y1 firmware |
+| `plumOS-Y1-v0.10.26-player.apk` | Player update for a device already running v0.10.24 or later plumOS-Y1 firmware |
 | `SHA256SUMS` | Verify downloaded release files |
 
-Follow the [Updater CE installation steps](docs/releases/v0.10.24.en.md). The APK updates only the app; use the ZIP to install or update the complete firmware.
+Follow the [first-installation steps](docs/releases/v0.10.24.en.md) or [v0.10.26 update steps](docs/releases/v0.10.26.en.md). The APK updates only the app.
 
 For later player updates, copy the APK into `Updates` on the music disk, eject it on the computer, end USB sharing and select the file under **Settings → Update player**.
 

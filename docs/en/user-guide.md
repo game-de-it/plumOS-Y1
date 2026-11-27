@@ -4,7 +4,7 @@
 
 ## Installation and recovery
 
-Use only the **Y1 Type A** package. The current candidate is `plumOS-Y1-v0.10.24-TypeA.zip`; download it from [GitHub Releases](https://github.com/game-de-it/plumOS-Y1/releases/tag/v0.10.24). Back up music and settings before flashing. Keep the matching original Type A firmware from the [manufacturer support page](https://www.innioasis.com/pages/support-details?type=y-1) for recovery. A failed or interrupted flash can prevent booting.
+Use only the **Y1 Type A** package. The first-installation firmware is `plumOS-Y1-v0.10.24-TypeA.zip`; download it from [GitHub Releases](https://github.com/game-de-it/plumOS-Y1/releases/tag/v0.10.24). Back up music and settings before flashing. Keep the matching original Type A firmware from the [manufacturer support page](https://www.innioasis.com/pages/support-details?type=y-1) for recovery. A failed or interrupted flash can prevent booting.
 
 1. Charge the player. Close other flashing utilities, switch Y1 off, and disconnect USB.
 2. In the compatible Innioasis Updater, select Y1 / Type A and its installation-from-file option, then select the package ZIP.
@@ -27,9 +27,9 @@ The Y1 has a rotating wheel, a center button, and four clickable ring directions
 | Upper ring / MENU | Back to the previous screen |
 | Lower ring / play-pause | Toggle playback |
 | Left/right ring, short press during playback | Previous/next track |
-| Left/right ring, hold on playback screen | Rewind/fast-forward, approximately 10 seconds per second held |
+| Left/right ring, hold on playback screen | Rewind/fast-forward, 10× for the first five seconds, then 13×, 16× and so on every five seconds |
 
-On the playback screen, select the play/pause, volume down, volume up, EQ, or playback-order icon with the wheel, then press Center. Ring controls may have different meanings inside Android or FM applications. Android settings can be operated with wheel selection and Center without a connected computer.
+On the playback screen, select the play/pause, volume down, volume up, EQ, playback-order, or A-B repeat icon with the wheel, then press Center. Ring controls may have different meanings inside Android or FM applications. Android settings can be operated with wheel selection and Center without a connected computer.
 
 ## Library and music transfer
 
@@ -54,7 +54,7 @@ For 0.10.24, first apply the full firmware ZIP, including when upgrading an earl
 
 After installing the full firmware, later player-only updates can be installed from the device:
 
-1. Start USB storage and copy `plumOS-Y1-v0.10.24-player.apk` into an `Updates` folder at the root of the music disk, alongside Music. Create the folder if needed.
+1. Start USB storage and copy `plumOS-Y1-v0.10.26-player.apk` into an `Updates` folder at the root of the music disk, alongside Music. Create the folder if needed.
 2. Eject the disk on the computer, then end USB storage on Y1.
 3. Open Settings → Update player. If Updates exists it opens first; other folders can also be browsed.
 4. Select the APK with the wheel and Center. Check the filename and current/new version, then choose Install.

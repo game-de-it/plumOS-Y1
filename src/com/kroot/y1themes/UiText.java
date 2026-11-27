@@ -43,6 +43,7 @@ final class UiText {
         add("温かみ", "Warm"); add("カスタム調整", "Custom");
         add("順番", "Sequential"); add("リピート全曲", "Repeat All");
         add("リピート1曲", "Repeat One"); add("シャッフル", "Shuffle");
+        add("BはAより後に設定", "Set B after A");
         add("ファイル名で表示", "File names"); add("タグの曲名で表示", "Tag titles");
         add("シャットダウン", "Shut down"); add("シャットダウンタイマー", "Sleep timer");
         add("画面タイムアウト", "Screen timeout"); add("クリック音", "Click sound");
